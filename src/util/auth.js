@@ -11,7 +11,7 @@ const config = {
 export function getLoginRedirect() {
   return new Promise((resolve, reject) => {
     axios
-      .get('/auth/redirect-spotify')
+      .get('https://spotify-music-analytics-server.herokuapp.com/auth/redirect-spotify')
       .then(res => resolve(res.data), err => reject(err));
   });
 }
