@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export function getTopSongs() {
   return new Promise((resolve, reject) => {
-    axios.get('/songs/top').then(
+    axios.get('https://spotify-music-analytics-server.herokuapp.com/songs/top').then(
       res => resolve(res.data),
       err => reject(err)
     );
@@ -11,7 +11,7 @@ export function getTopSongs() {
 
 export function getRecentSongs() {
   return new Promise((resolve, reject) => {
-    axios.get('/songs/recent').then(
+    axios.get('https://spotify-music-analytics-server.herokuapp.com/songs/recent').then(
       res => resolve(res.data),
       err => reject(err)
     );
