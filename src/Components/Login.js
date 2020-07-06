@@ -35,6 +35,7 @@ class Login extends React.Component {
     const { setUserInfo, history, userInfo, setTopSongs, setRecentSongs} = this.props;
 
     if (userInfo.id) {
+      console.log('user id : '+userInfo.id)
       top_songs = await getTopSongs();
       setTopSongs(top_songs);
       recent_songs = await getRecentSongs();
