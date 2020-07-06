@@ -37,6 +37,10 @@ class Login extends React.Component {
     if (userInfo.id) {
       console.log('user id : '+userInfo.id)
       history.push('/');
+      top_songs = await getTopSongs();
+      setTopSongs(top_songs);
+      recent_songs = await getRecentSongs();
+      setRecentSongs(recent_songs);
       return;
     };
     if (!code) return;
