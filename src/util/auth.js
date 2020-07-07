@@ -4,7 +4,7 @@ import { removeHashParams } from './url';
 const config = { 
   headers: {  
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': 'https://spotify-music-analytics-server.herokuapp.com'
+    'Access-Control-Allow-Origin': 'https://spotify-music-analytics.herokuapp.com'
   }
 }
 
