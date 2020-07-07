@@ -4,7 +4,6 @@ import { getLoginRedirect, registerSpotify } from '../util/auth';
 import { getUrlParams } from '../util/url';
 import { Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import { getTopSongs, getRecentSongs } from '../util/songs';
 
 const useStyles = theme => ({
   btnLogin: {
@@ -28,17 +27,17 @@ class Login extends React.Component {
   }
 
   async componentDidMount() {
-    let top_songs = {};
-    let recent_songs = {};
     const params = getUrlParams();
     const code = params.code || null;
     const { setUserInfo, history, userInfo, setTopSongs, setRecentSongs} = this.props;
 
     if (userInfo.id) {
       console.log('user id : '+userInfo.id)
-      top_songs = await getTopSongs();
+      await fetch("https://spotify-music-analytics-server.herokuapp.com/songs/top")
+      .then(response => response.json()).then(data => setTopSongs(data));
 
-      recent_songs = await getRecentSongs();
+      await fetch("https://spotify-music-analytics-server.herokuapp.com/songs/recent")
+      .then(response => response.json()).then(data => setRecentSongs(data));
 
       history.push('/');
       return;
