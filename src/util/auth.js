@@ -19,7 +19,7 @@ export function getLoginRedirect() {
 export function registerSpotify(code) {
   return new Promise((resolve, reject) => {
     axios
-      .post('https://spotify-music-analytics-server.herokuapp/auth/user', { code: removeHashParams(code) }, config)
+      .post('https://spotify-music-analytics-server.herokuapp.com/auth/user', { code: removeHashParams(code) }, config)
       .then(
         res => resolve(res.data),
         err => reject(err)
@@ -30,7 +30,7 @@ export function registerSpotify(code) {
 export function getSpotifyUser() {
   return new Promise((resolve, reject) => {
     axios
-      .get('https://spotify-music-analytics-server.herokuapp/auth/user')
+      .get('https://spotify-music-analytics-server.herokuapp.com/auth/user')
       .then(
         res => resolve(res.data),
         err => reject(err)
@@ -41,7 +41,7 @@ export function getSpotifyUser() {
 export function logout() {
   return new Promise((resolve, reject) => {
     axios
-      .get('https://spotify-music-analytics-server.herokuapp/auth/logout')
+      .get('https://spotify-music-analytics-server.herokuapp.com/auth/logout')
       .then(
         res => resolve(res),
         err => reject(err)
