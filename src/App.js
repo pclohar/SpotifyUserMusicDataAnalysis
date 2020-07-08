@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from './Components/Login';
 import Home from './Components/Home';
-import { getSpotifyUser } from './util/auth';
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import darkTheme from './theme/muiTheme'
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -16,15 +15,6 @@ class App extends Component {
   setUserInfo = (userInfo) => this.setState({ userInfo: userInfo });
   setTopSongs = (top_songs) => this.setState({ top_songs: top_songs });
   setRecentSongs = (recent_songs) => this.setState({ recent_songs: recent_songs});
-
-  async componentDidMount() {
-    const userInfo = await getSpotifyUser();
-    
-    if (userInfo) {
-      this.setUserInfo(userInfo);
-    }
-    //document.body.style.backgroundColor = 'black'
-  }
   
 
   
