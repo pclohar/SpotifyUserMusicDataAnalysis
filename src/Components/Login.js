@@ -5,6 +5,7 @@ import { getUrlParams } from '../util/url';
 import { Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { getTopSongs, getRecentSongs } from '../util/songs';
+import Cookies from 'universal-cookie';
 
 const useStyles = theme => ({
   btnLogin: {
@@ -34,8 +35,10 @@ class Login extends React.Component {
     const code = params.code || null;
     const { setUserInfo, history, userInfo, setTopSongs, setRecentSongs} = this.props;
 
+    const cookies = new Cookies();
+
+
     if (userInfo.id) {
-      console.log('user id:',userInfo.id)
       top_songs = await getTopSongs();
       setTopSongs(top_songs);
       recent_songs = await getRecentSongs();
@@ -46,6 +49,7 @@ class Login extends React.Component {
     if (!code) return;
 
     const user = await registerSpotify(code);
+    console.log(user.access_token)
     setUserInfo(user);
 
     
