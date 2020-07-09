@@ -40,9 +40,9 @@ class Login extends React.Component {
 
     if (userInfo.id) {
       
-      top_songs = await getTopSongs();
+      top_songs = await getTopSongs(userInfo.access_token);
       setTopSongs(top_songs);
-      recent_songs = await getRecentSongs();
+      recent_songs = await getRecentSongs(userInfo.access_token);
       setRecentSongs(recent_songs);
       history.push('/');
       return;
@@ -51,7 +51,7 @@ class Login extends React.Component {
 
     const user = await registerSpotify(code);
     console.log(user.access_token)
-    cookies.set('access_token', userInfo.access_token, { path: '/' });
+    
     setUserInfo(user);
 
     
