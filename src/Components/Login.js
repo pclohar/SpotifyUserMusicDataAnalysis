@@ -39,6 +39,7 @@ class Login extends React.Component {
 
 
     if (userInfo.id) {
+      cookies.set('access_token', user.access_token, { path: '/' });
       top_songs = await getTopSongs();
       setTopSongs(top_songs);
       recent_songs = await getRecentSongs();
