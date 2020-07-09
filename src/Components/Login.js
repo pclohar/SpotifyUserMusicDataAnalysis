@@ -39,7 +39,7 @@ class Login extends React.Component {
 
 
     if (userInfo.id) {
-      cookies.set('access_token', user.access_token, { path: '/' });
+      
       top_songs = await getTopSongs();
       setTopSongs(top_songs);
       recent_songs = await getRecentSongs();
@@ -51,6 +51,7 @@ class Login extends React.Component {
 
     const user = await registerSpotify(code);
     console.log(user.access_token)
+    cookies.set('access_token', userInfo.access_token, { path: '/' });
     setUserInfo(user);
 
     
